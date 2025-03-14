@@ -28,7 +28,7 @@ export default function Home() {
           <h1 className=".scroll-m-20 text-white text-2xl font-extrabold .tracking-tight md:text-5xl ">
             Coming Soon!!!
           </h1>
-
+    <div></div>
       </main>
     </div>
   );
