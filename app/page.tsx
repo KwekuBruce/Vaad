@@ -1,17 +1,26 @@
+"use client"
 import Image from "next/image";
 import Logowhite from "@/public/images/Logowhite.png";
+import React from "react";
 
 export default function Home() {
+  const [isMobile, setIsMobile] = React.useState(true);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div
-      className="items-center .justify-items-center min-h-screen p-4 bg-cover bg-center .bg-contain "
-      style={{ backgroundImage: "url(/images/bg.jpg)" }}
-      // style={{
-      //   backgroundImage: "url(/images/bg.jpg)",
-      //   [`@media (min-width: 1024px)`]: {
-      //     backgroundImage: "url(/images/bg-landscape.jpg)",
-      //   },
-      // }}
+      className="items-center .justify-items-center min-h-screen p-4 bg-cover  bg-center sm:bg-contain"
+      style={{ backgroundImage: isMobile ? "url(/images/bg.jpg)" : "url(/images/bg2.jpg)",
+       }}
+    
     >
         <nav className="">
           <Image
